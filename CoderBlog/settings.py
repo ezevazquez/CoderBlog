@@ -58,7 +58,7 @@ ROOT_URLCONF = 'CoderBlog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/Users/Eze/Workplace/respaldo/CoderBlog/templates'],
+        'DIRS': ['/home/facundo/Python/CoderBlog/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
