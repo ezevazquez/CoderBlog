@@ -4,11 +4,24 @@ from django.shortcuts import render
 from pages.forms import NewPost
 from pages.models import Post
 
+#para poder ver el detalle de las vistas
+from django.views.generic.detail import DetailView
+# para editar una vista
+from django.views.generic.edit import UpdateView
+#para eliminar vista
+from django.views.generic.edit import DeleteView
+
+
+
 # Create your views here.
 
 #Vista del inicio
 def pages(req):
- return render(req, 'pages/inicioPages.html')
+    posts = Post.objects.all()#aca traigo todos los posts
+    
+    context = {"posts":posts}
+    
+    return render(req, 'pages/inicioPages.html',context)
 
 #vista para crear fomulario
 def newPost(req):
@@ -30,5 +43,24 @@ def newPost(req):
         
     return render(req, "pages/newPost.html",{"myForm":myForm})
 
+#para ver el detalle de cada post
 
- 
+class PostDetail(DetailView):
+    
+    model = Post
+    template_name = "pages/postDetail.html"
+    
+    
+#para editar un post
+
+class PostUpdate(UpdateView):
+    model: Post
+    succes_irl = "pages/inicioPages.html"
+    fields = ['img', 'place', 'name', 'title', 'description']
+    
+
+
+#para eliminar una vista
+class PostDelete(DeleteView):
+    model = Post
+    succes_url = "pages/inicioPages.html"

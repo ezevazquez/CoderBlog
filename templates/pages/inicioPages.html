@@ -3,34 +3,41 @@
 
 
 {% block varContent %}
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-        <h1>inicio Blog</h1>
-        <a href="{% url 'newPost'%}">Crear Post</a>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <h1>inicio Blog</h1>
+            <a href="{% url 'newPost' %}">Crear Post</a>
+        </div>
     </div>
 
-{% if post %}
 
-    
-    {% for post in object_list  %}
 
-    <div class="post-preview">
-        <a href="post.html">
-            <h2 class="post-title">{{post.place}}</h2>
-            <h3 class="post-subtitle">{{post.title}}}}</h3>
-        </a>
-        <p class="post-meta">
-            Posted by
-            <p>{{post.name}}</p>
-            
-        </p>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                {% for post in posts %}
+                <div class="post-preview">
+                    <a href="{% url 'postDetail' post.id %}">
+                        <img src="{url}" alt="">
+                        <h2 class="post-title">{{post.place}}</h2>
+                        <h3 class="post-subtitle">{{post.title}}</h3>
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="{% url 'postDetail' post.id %}">{{post.name}}</a>
+                        
+                    </p>
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+                    
+                {% endfor %}
+            </div>
+        </div>
     </div>
-    <!-- Divider-->
-    <hr class="my-4" />
-        
-    {% endfor %}
-        
+  
     
-{% endif %}
+
     
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -38,7 +45,7 @@
                 <!-- Post preview-->
                 <div class="post-preview">
                     <a href="post.html">
-                        <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
+                        <h2 class="post-title">Hola</h2>
                         <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
                     </a>
                     <p class="post-meta">
