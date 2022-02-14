@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 
 class NewPost(forms.Form):
     #campos del formulario
-    img = forms.ImageField()
-    place = forms.CharField()
-    name = forms.CharField()
-    title = forms.CharField()
-    description = forms.CharField()
+    img = forms.ImageField(label= 'Imagenes', required=False)
+    place = forms.CharField(label='Nombre del Lugar')
+    name = forms.CharField(label='Nombre')
+    title = forms.CharField(label='Titulo')
+    description = forms.CharField(label='Contanos de tu viaje y comparti tu experiencia')

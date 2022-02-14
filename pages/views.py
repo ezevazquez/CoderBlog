@@ -55,7 +55,7 @@ class PostDetail(DetailView):
 
 class PostUpdate(UpdateView):
     model: Post
-    succes_irl = "pages/inicioPages.html"
+    succes_url = "pages/inicioPages.html"
     fields = ['img', 'place', 'name', 'title', 'description']
     
 
