@@ -3,6 +3,9 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from .forms import UserEditForm
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 def inicioAccounts(req):
@@ -47,7 +50,6 @@ def singup_request(request):
         return render(request, 'accounts/singup.html', {'form': form})
 
 
-
 def edit_request(request):
     usuario = request.user
 
@@ -65,7 +67,10 @@ def edit_request(request):
             usuario.last_name = informacion['last_name']
             usuario.save()
 
-            return render(request, 'accounts/inicio.html', {'mensaje': 'Usuario editado'})
+            return render(request, 'accounts/inicio.html')
+        else:
+            return render(request, 'accounts/inicio.html')
+        
     else:
         miFormulario = UserEditForm(initial={ 'email':usuario.email})
         
