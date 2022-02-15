@@ -36,7 +36,11 @@ def newPost(req):
             newPost = Post (img=info['img'], place=info['place'], name=info['name'], title=info['title'], description=info['description'])
             newPost.save()
             
-            return render(req,"pages/inicioPages.html")
+            posts = Post.objects.all()#aca traigo todos los posts
+    
+            context = {"posts":posts}
+    
+            return render(req, 'pages/inicioPages.html',context)
         
     else:
         myForm = NewPost()
