@@ -11,6 +11,9 @@ from django.views.generic.edit import UpdateView
 #para eliminar vista
 from django.views.generic.edit import DeleteView
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+
 
 
 # Create your views here.
@@ -24,6 +27,7 @@ def pages(req):
     return render(req, 'pages/inicioPages.html',context)
 
 #vista para crear fomulario
+@login_required
 def newPost(req):
     if req.method =='POST':
     
@@ -54,21 +58,19 @@ class PostDetail(DetailView):
     model = Post
     template_name = "pages/postDetail.html"
     
-    
-
-
-
 
 #para eliminar una vista
-class PostDelete(DeleteView):
+class PostDelete(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = '/pages/'
     template_name='pages/post_confirm_delete.html'
     
-#para editar un post    
+#para editar un post
+
+
+@login_required
 def postUpdate(req, post_id):#para editar el post
     post=Post.objects.get(id=post_id)
-    
     if req.method == 'POST':
         
         myForm = NewPost(req.POST)#aca llegan todos los datos del html
