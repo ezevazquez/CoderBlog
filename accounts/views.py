@@ -48,25 +48,27 @@ def singup_request(request):
 
 
 
-def editarPerfil(request):
+def edit_request(request):
     usuario = request.user
 
     if request.method == "POST":
         
         miFormulario = UserEditForm(request.POST)
-        if miFormulario.is_valid:
+        if miFormulario.is_valid():
 
             informacion = miFormulario.cleaned_data
 
             usuario.email = informacion['email']
             usuario.password1 = informacion['password1']
             usuario.password2 = informacion['password2']
+            usuario.first_name = informacion['first_name']
+            usuario.last_name = informacion['last_name']
             usuario.save()
 
-            return render(request, "homepage/index.html")
+            return render(request, 'accounts/inicio.html', {'mensaje': 'Usuario editado'})
     else:
         miFormulario = UserEditForm(initial={ 'email':usuario.email})
         
-        return render(request, "homepage/index.html", {"miFormulario":miFormulario, "ususario":usuario})
+        return render(request, 'accounts/profile.html', {"miFormulario":miFormulario, "ususario":usuario})
 
 

@@ -30,9 +30,17 @@
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'homepage'%}">Home</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'aboutus'%}">About</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'homePages'%}">Post</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'newPost'%}">Crear Post</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'loginAccounts'%}">Login</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'logoutAccounts'%}">Logout</a></li>
+                        
+                        {% if not request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'loginAccounts'%}">Login</a></li>                           
+                        {% endif %}
+                        
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'newPost'%}">Create Post</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'profileAccounts'%}">Edit Profile</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'logoutAccounts'%}">Logout {{user.username}}</a></li>
+                        {% endif %}
+                        
                     </ul>
                 </div>
             </div>
@@ -51,7 +59,6 @@
             </div>
         </header>
         <!-- Main Content-->
-
 
 
         {% block editProfile %}
