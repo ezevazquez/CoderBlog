@@ -6,11 +6,12 @@ from pages.models import Post
 
 #para poder ver el detalle de las vistas
 from django.views.generic.detail import DetailView
+#para poder ver el detalle de las vistas
+from django.views.generic import ListView
 # para editar una vista
-from django.views.generic.edit import UpdateView
-#para eliminar vista
-from django.views.generic.edit import DeleteView
+from django.views.generic.edit import UpdateView, DeleteView, CreateView
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -47,25 +48,23 @@ def newPost(req):
         
     return render(req, "pages/newPost.html",{"myForm":myForm})
 
-#para ver el detalle de cada post
+
 
 class PostDetail(DetailView):
     
     model = Post
     template_name = "pages/postDetail.html"
-    
-    
-#para editar un post
 
 class PostUpdate(UpdateView):
     model: Post
     success_url = '/pages/'
     fields = ['img', 'place', 'name', 'title', 'description']
     
-
-
-#para eliminar una vista
 class PostDelete(DeleteView):
     model = Post
     success_url = '/pages/'
     template_name='pages/post_confirm_delete.html'
+
+class PostList(LoginRequiredMixin, ListView):
+    model = Post
+    template_name='pages/postList.html'
