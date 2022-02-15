@@ -56,16 +56,16 @@ class PostDetail(DetailView):
     model = Post
     template_name = "pages/postDetail.html"
 
-class PostUpdate(UpdateView):
+class PostUpdate(LoginRequiredMixin, UpdateView):
     model: Post
     success_url = '/pages/'
     fields = ['img', 'place', 'name', 'title', 'description']
     
-class PostDelete(DeleteView):
+class PostDelete(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = '/pages/'
     template_name='pages/post_confirm_delete.html'
 
-class PostList(LoginRequiredMixin, ListView):
+class PostList(ListView):
     model = Post
     template_name='pages/postList.html'
