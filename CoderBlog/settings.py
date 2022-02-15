@@ -58,7 +58,7 @@ ROOT_URLCONF = 'CoderBlog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/home/facundo/Python/CoderBlog/templates'],
+        'DIRS': ['/home/facundo/Python/CoderBlog/templates', '/Users/Eze/Workplace/respaldo/CoderBlog/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,3 +132,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LOGIN_URL = '/accounts/login/'

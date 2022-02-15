@@ -66,7 +66,7 @@ class PostDelete(DeleteView):
     template_name='pages/post_confirm_delete.html'
     
 #para editar un post    
-def postUpdate(req, post_id):#para editar el profesor
+def postUpdate(req, post_id):#para editar el post
     post=Post.objects.get(id=post_id)
     
     if req.method == 'POST':
@@ -88,8 +88,8 @@ def postUpdate(req, post_id):#para editar el profesor
             return render(req, "pages/inicioPages.html")#volves al inicio
         
     else:
-        #creo el formulario con datos que voy a cambiar osea traigo lo que ya tiene cargado el profeso
+        #creo el formulario con datos que voy a cambiar osea traigo lo que ya tiene cargado el post
             myForm=NewPost(initial={'img':post.img, 'place': post.place , 'title': post.title, 'name': post.name, 'description': post.description})
             
     #voy al template para editarlo
-    return render(req,"pages/editPost.html",{"myForm":myForm, "post_id":post_id})#hago que retorne de nuevo la lista de profesores
+    return render(req,"pages/editPost.html",{"myForm":myForm, "post_id":post_id})#hago que retorne de nuevo la lista de posts
