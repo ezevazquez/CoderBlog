@@ -6,13 +6,12 @@ from pages.models import Post
 
 #para poder ver el detalle de las vistas
 from django.views.generic.detail import DetailView
-#para poder ver el detalle de las vistas
-from django.views.generic import ListView
 # para editar una vista
-from django.views.generic.edit import UpdateView, DeleteView, CreateView
+from django.views.generic.edit import UpdateView
+#para eliminar vista
+from django.views.generic.edit import DeleteView
 
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -25,7 +24,6 @@ def pages(req):
     return render(req, 'pages/inicioPages.html',context)
 
 #vista para crear fomulario
-@login_required
 def newPost(req):
     if req.method =='POST':
     
@@ -49,23 +47,49 @@ def newPost(req):
         
     return render(req, "pages/newPost.html",{"myForm":myForm})
 
-
+#para ver el detalle de cada post
 
 class PostDetail(DetailView):
     
     model = Post
     template_name = "pages/postDetail.html"
-
-class PostUpdate(LoginRequiredMixin, UpdateView):
-    model: Post
-    success_url = '/pages/'
-    fields = ['img', 'place', 'name', 'title', 'description']
     
-class PostDelete(LoginRequiredMixin, DeleteView):
+    
+
+
+
+
+#para eliminar una vista
+class PostDelete(DeleteView):
     model = Post
     success_url = '/pages/'
     template_name='pages/post_confirm_delete.html'
-
-class PostList(ListView):
-    model = Post
-    template_name='pages/postList.html'
+    
+#para editar un post    
+def postUpdate(req, post_id):#para editar el post
+    post=Post.objects.get(id=post_id)
+    
+    if req.method == 'POST':
+        
+        myForm = NewPost(req.POST)#aca llegan todos los datos del html
+    
+        if myForm.is_valid():
+            
+            info = myForm.cleaned_data
+            
+            post.img=info['img']
+            post.name=info['name']
+            post.place=info['place']
+            post.description=info['description']
+            post.title=info['title']
+                        
+            post.save()
+            
+            return render(req, "pages/inicioPages.html")#volves al inicio
+        
+    else:
+        #creo el formulario con datos que voy a cambiar osea traigo lo que ya tiene cargado el post
+            myForm=NewPost(initial={'img':post.img, 'place': post.place , 'title': post.title, 'name': post.name, 'description': post.description})
+            
+    #voy al template para editarlo
+    return render(req,"pages/editPost.html",{"myForm":myForm, "post_id":post_id})#hago que retorne de nuevo la lista de posts
