@@ -55,7 +55,7 @@ class PostDetail(DetailView):
 
 class PostUpdate(UpdateView):
     model: Post
-    succes_url = "pages/inicioPages.html"
+    success_url = '/pages/'
     fields = ['img', 'place', 'name', 'title', 'description']
     
 
@@ -63,4 +63,5 @@ class PostUpdate(UpdateView):
 #para eliminar una vista
 class PostDelete(DeleteView):
     model = Post
-    succes_url = "pages/inicioPages.html"
+    success_url = '/pages/'
+    template_name='pages/post_confirm_delete.html'

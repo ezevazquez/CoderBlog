@@ -1,0 +1,19 @@
+{% extends "homepage/index.html" %}
+{% load static %}
+
+
+{% block varContent %}
+
+   <div class="my-4">
+
+       <form action="" method= "POST">{% csrf_token %}
+           
+           <p>Estas seguro de eliminar el post {{ object }}? no se podra recuperar!</p>
+        
+            <input type="submit" value="si, eliminar">
+            
+        </form>
+        
+    </div>
+
+{% endblock varContent%}
