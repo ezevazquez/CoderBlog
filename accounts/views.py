@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from .forms import UserEditForm
 
 # Create your views here.
 
@@ -45,5 +46,27 @@ def singup_request(request):
         form = UserCreationForm()
         return render(request, 'accounts/singup.html', {'form': form})
 
+
+
+def editarPerfil(request):
+    usuario = request.user
+
+    if request.method == "POST":
+        
+        miFormulario = UserEditForm(request.POST)
+        if miFormulario.is_valid:
+
+            informacion = miFormulario.cleaned_data
+
+            usuario.email = informacion['email']
+            usuario.password1 = informacion['password1']
+            usuario.password2 = informacion['password2']
+            usuario.save()
+
+            return render(request, "homepage/index.html")
+    else:
+        miFormulario = UserEditForm(initial={ 'email':usuario.email})
+        
+        return render(request, "homepage/index.html", {"miFormulario":miFormulario, "ususario":usuario})
 
 

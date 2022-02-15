@@ -1,19 +1,21 @@
 {% extends 'homepage/index.html' %}
 {% load static %}
 
-{% block editarPerfil %}
+{% block editProfile %}
 
-<h1>Formulario - Editar Perfil</h1>
-<h2>De {{ususario}}</h2>
+    <h1>Formulario - Editar Perfil</h1>
+    <h2>De {{ususario}}</h2>
 
-<form action="" method="POST">{% csrf_token %}
+    <form action="" method="POST">{% csrf_token %}
 
-    <table>
-        {{ miFormulario.as_table }}
-    </table>
+        <table>
 
-</form>
+            {{ miFormulario.as_table }}
+        
+        </table>
 
-<input type="submit" value="Enviar">
+    </form>
 
-{% endblock editarPerfil %}
+    <input type="submit" value="Enviar">
+
+{% endblock editProfile %}
