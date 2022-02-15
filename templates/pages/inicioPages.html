@@ -3,18 +3,31 @@
 
 
 {% block varContent %}
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7"></div>
-                <h2>Compartinos tu experiencia</h2>
-                
-                <a href="{% url 'newPost' %}">Crear un Post</a>
-                <hr class="my-4" />
-                <h2>Mira todos los Posteos de nuestros usuarios</h2>
+
+    <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <div class="card px-5 py-5" id="form1">
+                    <div class="row d-flex justify-content-center">
+                        <div class="container px-4 px-lg-5">
+                            <div class="row gx-4 gx-lg-5 justify-content-center">
+                                <div class="col-md-10 col-lg-8 col-xl-7"></div>
+                                    <h2>Compartí tu experiencia</h2>
+                                    
+                                    <a href="{% url 'newPost' %}">Crear un Post</a>
+                                    <hr class="my-4" />
+                                    <h2>Mirá todos los Posteos de nuestros usuarios</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+
+    
 
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -40,13 +53,26 @@
         </div>
     </div>
   
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <h2>Contanos tu Experiencia, forma parte de nuestro Blog</h2>
-            <a href="{% url 'newPost' %}">Crear un Post</a>
+
+
+
+    <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <div class="card px-5 py-5" id="form1">
+                    <div class="row d-flex justify-content-center">
+                        <div class="container px-4 px-lg-5">
+                            <div class="row gx-4 gx-lg-5 justify-content-center">
+                                <h2>Contanos tu Experiencia, forma parte de nuestro Blog</h2>
+                                <a href="{% url 'newPost' %}">Crear un Post</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
+    
     
     
    

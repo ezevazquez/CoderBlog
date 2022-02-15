@@ -33,6 +33,7 @@
                         
                         {% if not request.user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'loginAccounts'%}">Login</a></li>                           
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'singupAccounts'%}">SingUp</a></li>                           
                         {% endif %}
                         
                         {% if request.user.is_authenticated %}
@@ -68,6 +69,8 @@
         {% block logintMensaje %}
 
         {% endblock logintMensaje %}
+
+        {% block singupInicio %}{% endblock singupInicio %}
 
 
         {% block varContent %}
