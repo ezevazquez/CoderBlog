@@ -4,4 +4,7 @@ from django.shortcuts import render
 
 def homepage(req):
  return render(req, 'homepage/index.html')
+
+def aboutus(req):
+ return render(req, 'homepage/aboutus.html')
  
