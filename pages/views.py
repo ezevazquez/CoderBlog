@@ -12,7 +12,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -25,6 +25,7 @@ def pages(req):
     return render(req, 'pages/inicioPages.html',context)
 
 #vista para crear fomulario
+@login_required
 def newPost(req):
     if req.method =='POST':
     
