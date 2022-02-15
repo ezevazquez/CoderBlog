@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 # Create your views here.
 
@@ -28,3 +28,22 @@ def login_request(request):
         form = AuthenticationForm()
         
         return render(request, 'accounts/login.html', {'form': form})
+
+def singup_request(request):
+    
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            form.save()
+            return render(request, 'accounts/inicio.html', {'mensaje': 'Usuario Creado'})
+        else:
+            return render(request, 'accounts/inicio.html', {'mensaje': 'Usuario no creado'})
+        
+    else:
+        form = UserCreationForm()
+        return render(request, 'accounts/singup.html', {'form': form})
+
+
+
