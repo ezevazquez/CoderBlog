@@ -11,5 +11,5 @@ Por un lado, Facundo creó toda la estructura de páginas para posteos, teniendo
 
 En paralelo, Ezequiel se encargó de toda la estructura usuarios. Creando la App "accounts" y creando instancias para que los nuevos ususarios puedan crear una cuenta, editarla, loguearse y deslogueares, y tener permisos para crear, editar, eliminar posts. Esto último, ya teniendo la parte de Facundo desarrollada.
 
-Juntos ambos fuimos corrigiendo errores que se fueron presentando para que la aplicacion quede totalmente funcional.
+Juntos fuimos corrigiendo errores que se fueron presentando para que la aplicacion quede totalmente funcional.
 
