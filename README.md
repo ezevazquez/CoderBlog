@@ -2,7 +2,7 @@
 Repositorio de trabajo para desarrollo de trabajo final de curso de Python en Coderhouse
 
 
-El proyecto fue creado en base a una estructura de Blog típiica. Donde se pueden cargar posteos sobre lugares que se visitaron en un viaje.
+El proyecto fue creado en base a una estructura de Blog típica. Donde se pueden cargar posteos sobre lugares que se visitaron en un viaje.
 Pensamos en que el usuario pueda cargar el lugar, su nombre, foto y descripcion del lugar, mostrando en una seccion de post, una vista rpevia del mismo, donde se ve el lugar, el titulo del posteo y quien lo posteo. Teniendo una vista detallada de cada posteo ingresando al mismo.
 
 Entre ambos creamos la parte de About y la arquitectura base del proyecto.
