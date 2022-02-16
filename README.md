@@ -13,3 +13,5 @@ En paralelo, Ezequiel se encargó de toda la estructura usuarios. Creando la App
 
 Juntos fuimos corrigiendo errores que se fueron presentando para que la aplicacion quede totalmente funcional.
 
+
+El video final del funcionamiento de la página se puede ver en el siguiente link: https://youtu.be/NwY2DJ_h7gg
