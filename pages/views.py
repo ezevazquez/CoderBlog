@@ -1,3 +1,4 @@
+from urllib import request
 from django.shortcuts import render
 
 #para importar formulario
@@ -31,7 +32,7 @@ def pages(req):
 def newPost(req):
     if req.method =='POST':
     
-        myForm = NewPost(req.POST)
+        myForm = NewPost(req.POST, files=req.FILES)
     
         if myForm.is_valid():
             
@@ -73,7 +74,7 @@ def postUpdate(req, post_id):#para editar el post
     post=Post.objects.get(id=post_id)
     if req.method == 'POST':
         
-        myForm = NewPost(req.POST)#aca llegan todos los datos del html
+        myForm = NewPost(req.POST, files=req.FILES)#aca llegan todos los datos del html
     
         if myForm.is_valid():
             
